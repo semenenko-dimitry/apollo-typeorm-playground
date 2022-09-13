@@ -1,4 +1,4 @@
-import {IUser} from "../types";
+import {UserObjType} from "../Types/User";
 
 const users = [
 	{
@@ -10,4 +10,4 @@ const users = [
 		age: 321,
 	},
 ];
- export default users as IUser[];
+ export default users as UserObjType[];
