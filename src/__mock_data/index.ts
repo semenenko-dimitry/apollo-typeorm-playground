@@ -1,6 +1,4 @@
-import {UserObjType} from "../Types/User";
-
-const users = [
+export const users = [
 	{
 		name: 'userName1',
 		age: 213,
@@ -10,4 +8,14 @@ const users = [
 		age: 321,
 	},
 ];
- export default users as UserObjType[];
+
+export const companies = [
+	{
+		name: 'userCompany',
+		url: 'to-do-validation',
+	},
+	{
+		name: 'LKS',
+		url: 'http://google.com',
+	},
+]

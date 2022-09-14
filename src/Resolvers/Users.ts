@@ -1,4 +1,4 @@
-import users from "../__mock_data";
+import {users} from "../__mock_data";
 import {Args, Mutation, Query, Resolver} from "type-graphql";
 import {UserObjType, AddUserArgType} from "../Types/User";
 
@@ -18,5 +18,3 @@ export class UserResolver {
 		return users;
 	}
 }
-
-export default UserResolver;

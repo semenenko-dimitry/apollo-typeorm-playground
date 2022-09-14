@@ -3,8 +3,9 @@ import { config } from 'dotenv'
 config()
 import express from 'express'
 import {ApolloServer} from 'apollo-server-express'
-import userResolver from './Resolvers/Users'
+import {UserResolver} from './Resolvers/Users'
 import { buildSchema } from 'type-graphql'
+import {SearchResolver} from "./Resolvers/Search";
 
 
 async function main () {
@@ -13,7 +14,8 @@ async function main () {
 		schema: await buildSchema({
 			emitSchemaFile: true,
 			resolvers: [
-				userResolver
+				UserResolver,
+				SearchResolver
 			],
 		}),
 		csrfPrevention: true,
