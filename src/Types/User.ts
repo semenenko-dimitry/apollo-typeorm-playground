@@ -1,4 +1,5 @@
 import {ArgsType, Field, Int, ObjectType} from "type-graphql";
+import {Min} from "class-validator";
 
 @ObjectType()
 export class UserObjType {
@@ -15,6 +16,6 @@ export class AddUserArgType {
 	public name: string
 
 	@Field(() => Int)
+	@Min(18, { message: "User age must be appropriate value" })
 	public age: number
-
 }
