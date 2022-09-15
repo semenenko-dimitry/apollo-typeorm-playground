@@ -1,25 +1,30 @@
 import {Args, Mutation, Query, Resolver} from "type-graphql";
-import {UserObjType, AddUserArgType} from "../Types/User";
+import {AddUserArgType} from "../Types/User";
 import getPgClient from "../db/connect";
+import {User} from "../Entities/User";
 
 @Resolver()
 export class UserResolver {
 	constructor() {}
 
-	@Query(() => [UserObjType])
-	public async users(): Promise<UserObjType[]> {
-		const client = await getPgClient()
-		const { rows } = await client.query('SELECT * FROM users')
-
-		return rows
+	@Query(() => [User])
+	public async users(): Promise<User[]> {
+		return await (await getPgClient())
+			.getRepository(User)
+			.createQueryBuilder('users')
+			.getMany()
 	}
 
-	@Mutation(() => [UserObjType])
-	public async addUser(@Args() { name, age }: AddUserArgType): Promise<UserObjType[]> {
-		const client = await getPgClient()
-		await client.query('INSERT INTO users(name, age) VALUES ($1, $2)', [name, age])
-		const { rows } = await client.query('SELECT * FROM users')
+	@Mutation(() => [User])
+	public async addUser(@Args() { name, age }: AddUserArgType): Promise<User[]> {
+		const userRepository = (await getPgClient()).getRepository(User)
+		await userRepository
+			.createQueryBuilder()
+			.insert()
+			.into(User)
+			.values([{ name, age }])
+			.execute()
 
-		return rows;
+		return await userRepository.find()
 	}
 }

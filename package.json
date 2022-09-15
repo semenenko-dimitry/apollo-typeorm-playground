@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-		"migrate": "node-pg-migrate",
-		"migrate:up": "npm run migrate up",
-		"migrate:down": "npm run migrate down",
+    "migrate": "node-pg-migrate",
+    "migrate:up": "npm run migrate up",
+    "migrate:down": "npm run migrate down",
     "prestart": "tsc",
     "start": "nodemon dist/index.js"
   },
@@ -28,7 +28,8 @@
     "graphql": "^15.4.0",
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^1.1.1"
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.3.9"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

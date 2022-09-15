@@ -5,7 +5,7 @@ export const companies = [
 		url: 'to-do-validation',
 	},
 	{
-		name: 'LKS',
+		name: 'localCompany',
 		url: 'http://google.com',
 	},
 ]
